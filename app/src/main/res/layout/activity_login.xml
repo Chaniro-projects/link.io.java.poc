@@ -66,6 +66,20 @@
             android:gravity="center"
             />
 
+        <EditText
+            android:id="@+id/ip_server"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/server_adress"
+            android:imeActionId="@+id/server_ip"
+            android:imeActionLabel="Join"
+            android:inputType="text"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:maxLength="40"
+            android:gravity="center"
+            />
+
         <Button
             android:id="@+id/login_button"
             style="?android:textAppearanceSmall"

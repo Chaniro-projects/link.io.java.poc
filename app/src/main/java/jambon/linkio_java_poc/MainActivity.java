@@ -280,6 +280,10 @@ public class MainActivity extends AppCompatActivity {
                 });
                 LinkIOApplication.lio.send("clear", "");
                 break;
+            case R.id.gotochat:
+                Intent intent1 = new Intent(this, ChatActivity.class);
+                startActivity(intent1);
+                break;
             case R.id.menu_quit:
                 break;
         }

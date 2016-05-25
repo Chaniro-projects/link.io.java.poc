@@ -26,6 +26,8 @@ public class LoginActivity extends Activity{
     private String password;
     private EditText roomView;
     private String room;
+    private EditText serverAdressView;
+    private String serverAdress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class LoginActivity extends Activity{
         usermailView = (EditText) findViewById(R.id.user_mail);
         userPasswordView = (EditText) findViewById(R.id.user_password);
         roomView = (EditText) findViewById(R.id.user_room);
+        serverAdressView = (EditText) findViewById(R.id.ip_server);
+        serverAdressView.setText("link-io.insa-rennes.fr:443");
 
         Button signInButton = (Button) findViewById(R.id.login_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -72,10 +76,17 @@ public class LoginActivity extends Activity{
         }
         this.room = room;
 
+        String address = serverAdressView.getText().toString().trim();
+        if (TextUtils.isEmpty(address)) {
+            serverAdressView.setError("Address required");
+            return;
+        }
+        this.serverAdress = address;
+
         final LoginActivity tmp = this;
 
         //Each field is completed, we try to connect to the server
-        LinkIOSetup.getInstance().connectTo(Constants.SERVER_ADDRESS)
+        LinkIOSetup.getInstance().connectTo(this.serverAdress)
                 .withMail(this.usermail)
                 .withPassword(this.password)
                 .withAPIKey("BCHY8PwT8foOpn23lJLL")
@@ -106,7 +117,5 @@ public class LoginActivity extends Activity{
                         startActivity(intent);
                     }
                 });
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
     }
 }

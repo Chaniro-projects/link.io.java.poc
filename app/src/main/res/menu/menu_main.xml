@@ -17,4 +17,9 @@
         android:title="Quitter"
         android:orderInCategory="100"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/gotochat"
+        android:title="Chat"
+        android:orderInCategory="120"
+        app:showAsAction="always"/>
 </menu>
